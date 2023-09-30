@@ -35,4 +35,4 @@ Here
 
 ## 4. JointPRS Implementation
 
-## 4.1 JointPRS-auto
+### 4.1 JointPRS-auto
