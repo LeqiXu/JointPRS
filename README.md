@@ -38,26 +38,21 @@ In this section, we assume we need to model four populations jointly. Please mod
 
 ### 4.1 Preparation
 ```
-## 1. Part1
 conda activate JointPRS
 
-## 2. Part2
 JointPRS_path=
 reference_path= ;type=
 bim_path= ;bim_prefix=
 outcome_path=
 param_phi=
 
-## 3. Part3
 pop1= ;pop2=; pop3= ;pop4=
 r1= ;r2= ;r3= ;r4=
 sst1= ;sst2= ;sst3= ;sst4= 
 sample_size1= ;sample_size2= ;sample_size3= ;sample_size4= 
 ```
-1. Part1
-- activate the conda environment
-3. Part2
-4. Part3
+- `${JointPRS_path}`: 
+- 
 
 ### 4.2 JointPRS-auto
 
