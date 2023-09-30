@@ -11,3 +11,5 @@ In this section, we will offer step-by-step guidance on JointPRS implementation.
 ## 2. LD Reference Panel Download
 
 ## 3. Summary Statistics Preparation
+
+## 4. JointPRS Implementation
