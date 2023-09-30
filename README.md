@@ -34,5 +34,29 @@ Here
 -  `P`: the p-value of the effect, which is used to calculate the standardized effect size.
 
 ## 4. JointPRS Implementation
+In this section, we assume we need to model four populations jointly. Please modify the code to reflect the actual number of populations present in your data.
 
-### 4.1 JointPRS-auto
+### 4.1 Preparation
+```
+conda activate JointPRS
+
+JointPRS_path=
+reference_path= ;type=
+bim_path= ;bim_prefix=
+outcome_path=
+param_phi=
+
+pop1= ;pop2=; pop3= ;pop4=
+r1= ;r2= ;r3= ;r4=
+sst1= ;sst2= ;sst3= ;sst4= 
+sample_size1= ;sample_size2= ;sample_size3= ;sample_size4= 
+```
+
+### 4.2 JointPRS-auto
+
+
+### 4.3 JointPRS
+
+```
+
+```
