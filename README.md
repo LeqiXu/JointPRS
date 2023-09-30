@@ -14,7 +14,7 @@ We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#gettin
 - **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples and the corresponding SNP information file.
 - **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data and the corresponding SNP information file.
 
-Place the downloaded LD reference panels and the SNP information file into their corresponding subfolders.
+Then place the downloaded LD reference panels and the SNP information file into their corresponding subfolders.
 
 ## 3. Summary Statistics Preparation
 We require the following format for summary statistics input (including the header line):
@@ -34,3 +34,5 @@ Here
 -  `P`: the p-value of the effect, which is used to calculate the standardized effect size.
 
 ## 4. JointPRS Implementation
+
+## 4.1 JointPRS-auto
