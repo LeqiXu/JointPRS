@@ -11,8 +11,8 @@ In this section, we will offer step-by-step guidance on JointPRS implementation.
 ## 2. LD Reference Panel Download
 We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
 
-- **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples.
-- **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data.
+- **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples and the corresponding SNP information file.
+- **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data and the corresponding SNP information file.
 
 Place the downloaded LD reference panels and the SNP information file into their corresponding subfolders.
 
