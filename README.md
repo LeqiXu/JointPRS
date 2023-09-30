@@ -9,7 +9,7 @@ In this section, we will offer step-by-step guidance on JointPRS implementation.
 ## 1. JointPRS Installation
 
 ## 2. LD Reference Panel Download
-We use the reference panel from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can download it there.
+We use the reference panel from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can download it following their guidance.
 
 ## 3. Summary Statistics Preparation
 
