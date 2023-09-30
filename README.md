@@ -60,7 +60,8 @@ sample_size1= ;sample_size2= ;sample_size3= ;sample_size4=
 - `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
 
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set use set **{EUR,EAS,AFR,SAS,AMR}**.
-- `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`.
+- `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
+  * `$r1=1,r2=1,r3=1,r4=1`: if you use **JointPRS-auto** or use **JointPRS** and `${param_phi}` comes from set **{1e-04, 1e-02, 1e+00}**
 
 ### 4.2 JointPRS-auto
 
