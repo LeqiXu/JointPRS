@@ -26,6 +26,11 @@ rs3131969   G   A   0.000148544    0.955
 rs1048488   T   C   0.000678053    0.798
 ...
 ```
-
+Here
+- `SNP`: the rs ID.
+-  `A1`: the effect allele.
+-  `A2`: the alternative allele.
+-  `BETA`: the effect of the A1 allele, which is only used to determine the direction of an association.
+-  `P`: the p-value of the effect, which is used to calculate the standardized effect size.
 
 ## 4. JointPRS Implementation
