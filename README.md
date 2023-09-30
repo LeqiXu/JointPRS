@@ -9,12 +9,12 @@ In this section, we will offer step-by-step guidance on JointPRS implementation.
 ## 1. JointPRS Installation
 
 ## 2. LD Reference Panel Download
-We use the reference panel from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can download it following their guidance. We highly recommend you to cosntruct two folders under the reference folder.
+We use the reference panel from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download it. It is strongly recommended to create two subfolders within your reference directory
 
-- **1KG**: LD reference panels constructed using the 1000 Genomes Project phase 3 samples.
-- **UKBB**: LD reference panels constructed using the UK Biobank data.
+- **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples.
+- **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data.
 
-And put the corresponding LD reference panels as well as the SNP information file in the folder.
+Place the LD reference panels and the SNP information file into their corresponding subfolders.
 
 ## 3. Summary Statistics Preparation
 
