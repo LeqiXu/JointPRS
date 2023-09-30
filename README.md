@@ -54,6 +54,10 @@ r1= ;r2= ;r3= ;r4=
 sst1= ;sst2= ;sst3= ;sst4= 
 sample_size1= ;sample_size2= ;sample_size3= ;sample_size4= 
 ```
+1. Part1
+   - activate the conda environment
+3. Part2
+4. Part3
 
 ### 4.2 JointPRS-auto
 
