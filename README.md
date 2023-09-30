@@ -6,5 +6,5 @@ JointPRS is a cross-population PRS model that only requires GWAS summary statist
 # Getting Started
 In this section, we will offer step-by-step guidance on JointPRS implementation.
 
-## JointPRS Installation
+## 1. JointPRS Installation
 
