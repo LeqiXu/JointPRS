@@ -3,6 +3,8 @@ JointPRS is a cross-population PRS model that only requires GWAS summary statist
 - **JointPRS-auto**: **no need** for a validation dataset.
 - **JointPRS**: requires a validation dataset for tuning parameters. 
 
+# Version History
+
 # Getting Started
 In this section, we will offer step-by-step guidance on JointPRS implementation.
 
@@ -96,3 +98,13 @@ python ${JointPRS_path}/JointPRS.py \
 --out_dir=${outcome_path} \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
+
+# Example
+
+# Acknowledgment
+
+# Support
+
+# Citation
+
+
