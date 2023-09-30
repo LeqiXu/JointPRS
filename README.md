@@ -55,7 +55,7 @@ sample_size1= ;sample_size2= ;sample_size3= ;sample_size4=
 - `${reference_path}`: full path to the reference directory; `${type}`: 1KG or UKBB if you construct two subfolders as recommended.
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
-- `${param_phi}`: **remove** this line if you use **JointPRS-auto**, and do a small-scale grid search param_phi=1e-06, 1e-04, 1e-02, 1e+00 to find the optimal phi value in the validation dataset if you use **JointPRS**.
+- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; **use set {1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
 
 ### 4.2 JointPRS-auto
 
