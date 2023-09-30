@@ -20,10 +20,10 @@ Place the LD reference panels and the SNP information file into their correspond
 We require the following summary statistics input for all populations:
 
 ```
-SNP  A1  A2  BETA  P
-rs3131972  G  A  -0.000422623  0.869
-rs3131969  G  A  0.000148544  0.955
-rs1048488  T  C  0.000678053  0.798
+SNP         A1  A2  BETA           P
+rs3131972   G   A   -0.000422623   0.869
+rs3131969   G   A   0.000148544    0.955
+rs1048488   T   C   0.000678053    0.798
 ...
 ```
 
