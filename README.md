@@ -17,7 +17,7 @@ We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#gettin
 Place the LD reference panels and the SNP information file into their corresponding subfolders.
 
 ## 3. Summary Statistics Preparation
-We require the following summary statistics input for all populations:
+We require the following format for summary statistics input (including the header line):
 
 ```
 SNP         A1  A2  BETA           P
@@ -26,5 +26,6 @@ rs3131969   G   A   0.000148544    0.955
 rs1048488   T   C   0.000678053    0.798
 ...
 ```
+
 
 ## 4. JointPRS Implementation
