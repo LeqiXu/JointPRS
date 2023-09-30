@@ -34,6 +34,8 @@ Here
 -  `BETA`: the effect of the A1 allele, which is only used to determine the direction of an association.
 -  `P`: the p-value of the effect, which is used to calculate the standardized effect size.
 
+In addition, you need to obtain the sample size for the summary statistics, and take the median value if the sample size is different across SNPs.
+
 ## 4. JointPRS Implementation
 In this section, we assume we need to model four populations jointly. Please modify the code to reflect the actual number of populations present in your data.
 
@@ -59,16 +61,38 @@ sample_size1= ;sample_size2= ;sample_size3= ;sample_size4=
 - `${outcome_path}`: full path to the outcome directory.
 - `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
 
-- `${pop1},${pop2},${pop3},${pop4}`: population name from set use set **{EUR,EAS,AFR,SAS,AMR}**.
+- `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
 - `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
-  * `r1=1,r2=1,r3=1,r4=1`: if you use **JointPRS-auto** or use **JointPRS** and `${param_phi}` comes from set **{1e-04, 1e-02, 1e+00}**. This setting representing the positive correlation assumption.
-  * `r1=0,r2=0,r3=0,r4=0`: if you use **JointPRS** and `${param_phi}` comes from set **{1e-06}**. This setting representing no correlation assumption and is equivalent to PRScsx model.
+  * `r1=1,r2=1,r3=1,r4=1`: if you use **JointPRS-auto** or use **JointPRS** and `${param_phi}` comes from set **{1e-04, 1e-02, 1e+00}**. This setting represents the positive correlation assumption.
+  * `r1=0,r2=0,r3=0,r4=0`: if you use **JointPRS** and `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRScsx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
+- `${sst1},${sst2},${sst3},${sst4}`: full path and full name of the summary statistics for the corresponding poopulation.
+- `${sample_size1},${sample_size2},${sample_size3},${sample_size4}`: sample size for the corresponding summary statistics, and take the median value if the sample size is different across SNPs.
 
 ### 4.2 JointPRS-auto
-
-
-### 4.3 JointPRS
-
+```
+python ${JointPRS_path}/JointPRS.py \
+--ref_dir=${refernce_path}/${type} \
+--bim_prefix=${bim_path}/${bim_prefix} \
+--pop=${pop1},${pop2},${pop3},${pop4} \
+--rho_cons=${r1},${r2},${r3},${r4} \
+--sst_file=${sst1},${sst2},${sst3},${sst4} \
+--n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+--chrom=THECHR \
+--out_dir=${outcome_path} \
+--out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
 
+### 4.3 JointPRS
+```
+python ${JointPRS_path}/JointPRS.py \
+--ref_dir=${refernce_path}/${type} \
+--bim_prefix=${bim_path}/${bim_prefix} \
+--pop=${pop1},${pop2},${pop3},${pop4} \
+--rho_cons=${r1},${r2},${r3},${r4} \
+--sst_file=${sst1},${sst2},${sst3},${sst4} \
+--n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+--chrom=THECHR \
+--phi=${param_phi} \
+--out_dir=${outcome_path} \
+--out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
