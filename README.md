@@ -26,6 +26,7 @@ rs3131969   G   A   0.000148544    0.955
 rs1048488   T   C   0.000678053    0.798
 ...
 ```
+
 Here
 - `SNP`: the rs ID.
 -  `A1`: the effect allele.
@@ -51,11 +52,15 @@ r1= ;r2= ;r3= ;r4=
 sst1= ;sst2= ;sst3= ;sst4= 
 sample_size1= ;sample_size2= ;sample_size3= ;sample_size4= 
 ```
+
 - `${JointPRS_path}`: full path to the JointPRS software directory.
-- `${reference_path}`: full path to the reference directory; `${type}`: 1KG or UKBB if you construct two subfolders as recommended.
+- `${reference_path}`: full path to the reference directory; `${type}`: **1KG** or **UKBB** if you construct two subfolders as recommended.
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
-- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; **use set {1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
+- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
+
+- `${pop1},${pop2},${pop3},${pop4}`: population name from set use set **{EUR,EAS,AFR,SAS,AMR}**.
+- `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1}\cdot${r2}` is the upper bound for the correlation betwen `${pop1}` and `${pop2}`
 
 ### 4.2 JointPRS-auto
 
