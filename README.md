@@ -14,7 +14,7 @@ We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#gettin
 - **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples.
 - **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data.
 
-Place the LD reference panels and the SNP information file into their corresponding subfolders.
+Place the downloaded LD reference panels and the SNP information file into their corresponding subfolders.
 
 ## 3. Summary Statistics Preparation
 We require the following format for summary statistics input (including the header line):
