@@ -3,14 +3,14 @@ JointPRS is a cross-population PRS model that only requires GWAS summary statist
 - **JointPRS-auto**: **no need** for a validation dataset.
 - **JointPRS**: requires a validation dataset for tuning parameters. 
 
-# Version History
+## Version History
 
-# Getting Started
+## Getting Started
 In this section, we will offer step-by-step guidance on JointPRS implementation.
 
-## 1. JointPRS Installation
+### 1. JointPRS Installation
 
-## 2. LD Reference Panel Download
+### 2. LD Reference Panel Download
 We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
 
 - **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples and the corresponding SNP information file.
@@ -18,7 +18,7 @@ We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#gettin
 
 Then place the downloaded LD reference panels and the SNP information file into their corresponding subfolders.
 
-## 3. Summary Statistics Preparation
+### 3. Summary Statistics Preparation
 We require the following format for summary statistics input (including the header line):
 
 ```
@@ -38,10 +38,10 @@ Here
 
 In addition, you need to obtain the sample size for the summary statistics, and take the median value if the sample size is different across SNPs.
 
-## 4. JointPRS Implementation
+### 4. JointPRS Implementation
 In this section, we assume we need to model four populations jointly. Please modify the code to reflect the actual number of populations present in your data.
 
-### 4.1 Preparation
+#### 4.1 Preparation
 ```
 conda activate JointPRS
 
@@ -70,7 +70,7 @@ sample_size1= ;sample_size2= ;sample_size3= ;sample_size4=
 - `${sst1},${sst2},${sst3},${sst4}`: full path and full name of the summary statistics for the corresponding poopulation.
 - `${sample_size1},${sample_size2},${sample_size3},${sample_size4}`: sample size for the corresponding summary statistics, and take the median value if the sample size is different across SNPs.
 
-### 4.2 JointPRS-auto
+#### 4.2 JointPRS-auto
 ```
 python ${JointPRS_path}/JointPRS.py \
 --ref_dir=${refernce_path}/${type} \
@@ -84,7 +84,7 @@ python ${JointPRS_path}/JointPRS.py \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
 
-### 4.3 JointPRS
+#### 4.3 JointPRS
 ```
 python ${JointPRS_path}/JointPRS.py \
 --ref_dir=${refernce_path}/${type} \
@@ -99,12 +99,12 @@ python ${JointPRS_path}/JointPRS.py \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
 
-# Example
+## Example
 
-# Acknowledgment
+## Acknowledgment
 
-# Support
+## Support
 
-# Citation
+## Citation
 
 
