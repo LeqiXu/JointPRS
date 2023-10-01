@@ -24,7 +24,7 @@ conda activate JointPRS
 ```
 
 ### 2. LD Reference Panel Download
-We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
+We use reference panels from [PRS-CSx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
 
 - **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples and the corresponding SNP information file.
 - **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data and the corresponding SNP information file.
@@ -80,7 +80,7 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
 - `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
   * `r1=1,r2=1,r3=1,r4=1`: if you use **JointPRS-auto** or use **JointPRS** and `${param_phi}` comes from set **{1e-04, 1e-02, 1e+00}**. This setting represents the positive correlation assumption.
-  * `r1=0,r2=0,r3=0,r4=0`: if you use **JointPRS** and `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRScsx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
+  * `r1=0,r2=0,r3=0,r4=0`: if you use **JointPRS** and `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRS-CSx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
 - `${sst1},${sst2},${sst3},${sst4}`: full path and full name of the summary statistics for the corresponding poopulation.
 - `${sample_size1},${sample_size2},${sample_size3},${sample_size4}`: sample size for the corresponding summary statistics, and take the median value if the sample size is different across SNPs.
 
@@ -185,8 +185,10 @@ python ${JointPRS_path}/JointPRS.py \
 Here you still need to specify `JointPRS_path` and `reference_path` by yourself.
 
 ## Acknowledgment
+Part of the code is adapted from [PRS-CSx](https://github.com/getian107/PRScsx/tree/master). We thank Dr. Tian Ge for sharing his code and LD reference panels.
 
 ## Support
+Please direct any problems or questions to Leqi Xu (leqi.xu@yale.edu).
 
 ## Citation
 
