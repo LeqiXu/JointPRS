@@ -17,6 +17,7 @@ conda env create -f environment.yml
 conda activate JointPRS
 python setup.py build_ext --inplace
 ```
+
 After this, you only need to use
 ```
 conda activate JointPRS
