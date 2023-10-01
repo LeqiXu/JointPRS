@@ -74,7 +74,7 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 - `${reference_path}`: full path to the reference directory; `${type}`: **1KG** or **UKBB** if you construct two subfolders as recommended.
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
-- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00, auto}** if you use **JointPRS**.
+- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
 - `${chr}`: the chromosome we want to consider (1-22) and we recommend estimate 22 chromosomes in parallel.
 
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
