@@ -87,7 +87,7 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 #### 4.2 JointPRS-auto
 ```
 python ${JointPRS_path}/JointPRS.py \
---ref_dir=${refernce_path}/${type} \
+--ref_dir=${reference_path}/${type} \
 --bim_prefix=${bim_path}/${bim_prefix} \
 --pop=${pop1},${pop2},${pop3},${pop4} \
 --rho_cons=${r1},${r2},${r3},${r4} \
@@ -101,7 +101,7 @@ python ${JointPRS_path}/JointPRS.py \
 #### 4.3 JointPRS
 ```
 python ${JointPRS_path}/JointPRS.py \
---ref_dir=${refernce_path}/${type} \
+--ref_dir=${reference_path}/${type} \
 --bim_prefix=${bim_path}/${bim_prefix} \
 --pop=${pop1},${pop2},${pop3},${pop4} \
 --rho_cons=${r1},${r2},${r3},${r4} \
@@ -136,7 +136,7 @@ sst3=${JointPRS_path}/example_data/AFR_sumstat.txt; sst4=${JointPRS_path}/exampl
 sample_size1=885546; sample_size2=116404; sample_size3=90804; sample_size4=33953
 
 python ${JointPRS_path}/JointPRS.py \
---ref_dir=${refernce_path}/${type} \
+--ref_dir=${reference_path}/${type} \
 --bim_prefix=${bim_path}/${bim_prefix} \
 --pop=${pop1},${pop2},${pop3},${pop4} \
 --rho_cons=${r1},${r2},${r3},${r4} \
