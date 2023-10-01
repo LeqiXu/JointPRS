@@ -117,9 +117,9 @@ python ${JointPRS_path}/JointPRS.py \
 **JointPRS has two types of outputs:**
 - Posterior SNP effect size estimates for each chromosome for each population (pst_eff):
 ```
-1	rs3934834	1005806	T	C	-3.715860e-05	6.496727e-03
-1	rs3766192	1017197	T	C	-1.608738e-05	1.829326e-03
-1	rs9442372	1018704	G	A	7.444141e-05	1.959886e-02
+1 rs3934834 1005806	T	C	-3.715860e-05	6.496727e-03
+1	rs3766192 1017197	T	C	-1.608738e-05	1.829326e-03
+1	rs9442372 1018704	G	A	7.444141e-05	1.959886e-02
 ...
 ```
  Seven columns represent chromosome, rsID, base position, A1, A2, posterior effect size estimates and local shrinkage estimates
