@@ -46,15 +46,16 @@ In this section, we assume we need to model four populations jointly. Please mod
 conda activate JointPRS
 
 JointPRS_path=
-reference_path= ;type=
-bim_path= ;bim_prefix=
+reference_path= ; type=
+bim_path= ; bim_prefix=
 outcome_path=
 param_phi=
+chr=
 
-pop1= ;pop2=; pop3= ;pop4=
-r1= ;r2= ;r3= ;r4=
-sst1= ;sst2= ;sst3= ;sst4= 
-sample_size1= ;sample_size2= ;sample_size3= ;sample_size4= 
+pop1= ; pop2= ; pop3= ; pop4=
+r1= ; r2= ; r3= ; r4=
+sst1= ; sst2= ; sst3= ; sst4= 
+sample_size1= ; sample_size2= ; sample_size3= ; sample_size4= 
 ```
 
 - `${JointPRS_path}`: full path to the JointPRS software directory.
@@ -62,6 +63,7 @@ sample_size1= ;sample_size2= ;sample_size3= ;sample_size4=
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
 - `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
+- `${chr}`: the chromosome we want to consider (1-22) and we recommend estimate 22 chromosomes in parallel.
 
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
 - `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
@@ -79,7 +81,7 @@ python ${JointPRS_path}/JointPRS.py \
 --rho_cons=${r1},${r2},${r3},${r4} \
 --sst_file=${sst1},${sst2},${sst3},${sst4} \
 --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
---chrom=THECHR \
+--chrom=${chr} \
 --out_dir=${outcome_path} \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
@@ -93,13 +95,45 @@ python ${JointPRS_path}/JointPRS.py \
 --rho_cons=${r1},${r2},${r3},${r4} \
 --sst_file=${sst1},${sst2},${sst3},${sst4} \
 --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
---chrom=THECHR \
+--chrom=${chr} \
 --phi=${param_phi} \
 --out_dir=${outcome_path} \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
 
 ## Example
+The example contains EUR, EAS, AFR and GWAS summary statistics and a bim file for 500 SNPs on chromosome 1 for HDL.
+- The summary statistics comes from [GLGC](https://csg.sph.umich.edu/willer/public/glgc-lipids2021/).
+- The bim file comes from the [1000 Genome Project](https://www.internationalgenome.org/data).
+
+The following code is a demo to use the example data:
+```
+conda activate JointPRS
+
+JointPRS_path=
+reference_path= ; type=1KG
+bim_path=${JointPRS_path}/example_data; bim_prefix=example
+outcome_path=${JointPRS_path}/example_data
+param_phi=1e-04
+
+pop1=EUR; pop2=EAS; pop3=AFR; pop4=SAS
+r1=1; r2=1; r3=1; r4=1
+sst1=${JointPRS_path}/example_data/EUR_sumstat.txt; sst2=${JointPRS_path}/example_data/EAS_sumstat.txt; sst3=${JointPRS_path}/example_data/AFR_sumstat.txt; sst4=${JointPRS_path}/example_data/SAS_sumstat.txt 
+sample_size1=885546; sample_size2=116404; sample_size3=90804; sample_size4=33953
+
+python ${JointPRS_path}/JointPRS.py \
+--ref_dir=${refernce_path}/${type} \
+--bim_prefix=${bim_path}/${bim_prefix} \
+--pop=${pop1},${pop2},${pop3},${pop4} \
+--rho_cons=${r1},${r2},${r3},${r4} \
+--sst_file=${sst1},${sst2},${sst3},${sst4} \
+--n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+--chrom=${chr} \
+--phi=${param_phi} \
+--out_dir=${outcome_path} \
+--out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
+```
+Here you still need to specify `JointPRS_path` and `reference_path` by yourself.
 
 ## Acknowledgment
 
