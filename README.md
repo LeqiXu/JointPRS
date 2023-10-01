@@ -118,7 +118,8 @@ param_phi=1e-04
 
 pop1=EUR; pop2=EAS; pop3=AFR; pop4=SAS
 r1=1; r2=1; r3=1; r4=1
-sst1=${JointPRS_path}/example_data/EUR_sumstat.txt; sst2=${JointPRS_path}/example_data/EAS_sumstat.txt; sst3=${JointPRS_path}/example_data/AFR_sumstat.txt; sst4=${JointPRS_path}/example_data/SAS_sumstat.txt 
+sst1=${JointPRS_path}/example_data/EUR_sumstat.txt; sst2=${JointPRS_path}/example_data/EAS_sumstat.txt
+sst3=${JointPRS_path}/example_data/AFR_sumstat.txt; sst4=${JointPRS_path}/example_data/SAS_sumstat.txt 
 sample_size1=885546; sample_size2=116404; sample_size3=90804; sample_size4=33953
 
 python ${JointPRS_path}/JointPRS.py \
