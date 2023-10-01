@@ -1,0 +1,10 @@
+name: JointPRS
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - cython
+  - h5py
+  - numpy
+  - scipy
+  - setuptools
