@@ -9,6 +9,18 @@ JointPRS is a cross-population PRS model that only requires GWAS summary statist
 In this section, we will offer step-by-step guidance on JointPRS implementation.
 
 ### 1. JointPRS Installation
+For the first time, you need to use the following code to install JointPRS:
+```
+git clone https://github.com/LeqiXu/JointPRS.git
+cd JointPRS
+conda env create -f environment.yml
+conda activate JointPRS
+python setup.py build_ext --inplace
+```
+After this, you only need to use
+```
+conda activate JointPRS
+```
 
 ### 2. LD Reference Panel Download
 We use reference panels from [PRScsx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
@@ -20,7 +32,6 @@ Then place the downloaded LD reference panels and the SNP information file into 
 
 ### 3. Summary Statistics Preparation
 We require the following format for summary statistics input (including the header line):
-
 ```
 SNP         A1  A2  BETA         P
 rs3934834	  C	  T	  0.0063086	   0.00512
