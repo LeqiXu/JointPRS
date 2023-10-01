@@ -22,10 +22,10 @@ Then place the downloaded LD reference panels and the SNP information file into 
 We require the following format for summary statistics input (including the header line):
 
 ```
-SNP         A1  A2  BETA           P
-rs3131972   G   A   -0.000422623   0.869
-rs3131969   G   A   0.000148544    0.955
-rs1048488   T   C   0.000678053    0.798
+SNP         A1  A2  BETA         P
+rs3934834	  C	  T	  0.0063086	   0.00512
+rs3766192	  T	  C	  0.00761278	  5.14e-06
+rs9442372	  G	  A	  0.00690567	  2.66e-05
 ...
 ```
 
