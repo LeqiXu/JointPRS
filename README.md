@@ -127,6 +127,7 @@ reference_path= ; type=1KG
 bim_path=${JointPRS_path}/example_data; bim_prefix=example
 outcome_path=${JointPRS_path}/example_data
 param_phi=1e-04
+chr=1
 
 pop1=EUR; pop2=EAS; pop3=AFR; pop4=SAS
 r1=1; r2=1; r3=1; r4=1
