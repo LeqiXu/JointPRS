@@ -115,21 +115,21 @@ python ${JointPRS_path}/JointPRS.py \
 
 #### 4.4 Output
 JointPRS has two types of outputs:
-- Posterior SNP effect size estimates for each chromosome for each population:
-```
-1	rs3934834	1005806	T	C	-3.715860e-05	6.496727e-03
-1	rs3766192	1017197	T	C	-1.608738e-05	1.829326e-03
-1	rs9442372	1018704	G	A	7.444141e-05	1.959886e-02
-...
-```
-Seven columns represent chromosome, rsID, base position, A1, A2, posterior effect size estimates and local shrinkage estimates
-- Correlation matrix estimates for each chromosome:
-```
-9.999999999999896749e-01 4.676351646602236456e-01 7.278592525977222172e-01 5.202891308281465399e-01
-4.676351646602236456e-01 9.999999999999896749e-01 6.543938271240943294e-01 3.986037958722946639e-01
-7.278592525977222172e-01 6.543938271240943294e-01 9.999999999999896749e-01 4.418160360865302505e-01
-5.202891308281465399e-01 3.986037958722946639e-01 4.418160360865302505e-01 9.999999999999896749e-01
-```
+- Posterior SNP effect size estimates for each chromosome for each population (pst_eff):
+ ```
+ 1	rs3934834	1005806	T	C	-3.715860e-05	6.496727e-03
+ 1	rs3766192	1017197	T	C	-1.608738e-05	1.829326e-03
+ 1	rs9442372	1018704	G	A	7.444141e-05	1.959886e-02
+ ...
+ ```
+ Seven columns represent chromosome, rsID, base position, A1, A2, posterior effect size estimates and local shrinkage estimates
+- Correlation matrix estimates for each chromosome (pst_corr):
+ ```
+ 9.999999999999896749e-01 4.676351646602236456e-01 7.278592525977222172e-01 5.202891308281465399e-01
+ 4.676351646602236456e-01 9.999999999999896749e-01 6.543938271240943294e-01 3.986037958722946639e-01
+ 7.278592525977222172e-01 6.543938271240943294e-01 9.999999999999896749e-01 4.418160360865302505e-01
+ 5.202891308281465399e-01 3.986037958722946639e-01 4.418160360865302505e-01 9.999999999999896749e-01
+ ```
 
 We recommend you to use PLINK/2 --score command (https://www.cog-genomics.org/plink/2.0/score) which requires three columns: rsID, A1, and posterior effect size estimates:
 ```
