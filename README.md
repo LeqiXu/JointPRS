@@ -35,7 +35,7 @@ Then place the downloaded LD reference panels and the SNP information file into 
 ### 3. Summary Statistics Preparation
 We require the following format for summary statistics input (including the header line):
 ```
-SNP               A1      A2      BETA         P
+SNP               A1      A2      BETA              P
 rs3934834	  C	  T	  0.0063086	   0.00512
 rs3766192	  T	  C	  0.00761278	  5.14e-06
 rs9442372	  G	  A	  0.00690567	  2.66e-05
