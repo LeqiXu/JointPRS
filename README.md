@@ -4,6 +4,7 @@ JointPRS is a cross-population PRS model that only requires GWAS summary statist
 - **JointPRS**: requires a validation dataset for tuning parameters. 
 
 ## Update History
+**Sept 30, 2023**: Repository made public.
 
 ## Getting Started
 In this section, we will offer step-by-step guidance on JointPRS implementation.
