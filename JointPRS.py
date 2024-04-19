@@ -103,10 +103,10 @@ def main():
 
         if os.path.isfile(param_dict['ref_dir'] + '/snpinfo_mult_1kg_hm3'):
             ref = '1kg'
-            ref_dict = parse_genet.parse_ref(param_dict['ref_dir'] + '/snpinfo_mult_1kg_hm3', int(chrom), ref, param_dict['pop'], n_pop)
+            ref_dict = parse_genet.parse_ref(param_dict['ref_dir'] + '/snpinfo_mult_1kg_hm3', int(chrom), ref)
         elif os.path.isfile(param_dict['ref_dir'] + '/snpinfo_mult_ukbb_hm3'):
             ref = 'ukbb'
-            ref_dict = parse_genet.parse_ref(param_dict['ref_dir'] + '/snpinfo_mult_ukbb_hm3', int(chrom), ref, param_dict['pop'], n_pop)
+            ref_dict = parse_genet.parse_ref(param_dict['ref_dir'] + '/snpinfo_mult_ukbb_hm3', int(chrom), ref)
 
         vld_dict = parse_genet.parse_bim(param_dict['bim_prefix'], int(chrom))
 

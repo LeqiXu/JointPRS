@@ -14,9 +14,9 @@ import numpy as np
 import h5py
 
 
-def parse_ref(ref_file, chrom, ref, pop_all, n_pop):
+def parse_ref(ref_file, chrom, ref):
     print('... parse reference file: %s ...' % ref_file)
-    pop_list = ['AFR', 'AMR', 'EAS', 'EUR', 'SAS']
+
     if ref == '1kg' or ref == 'ukbb':
         ref_dict = {'CHR':[], 'SNP':[], 'BP':[], 'A1':[], 'A2':[], 
                     'FRQ_AFR':[], 'FRQ_AMR':[], 'FRQ_EAS':[], 'FRQ_EUR':[], 'FRQ_SAS':[],
@@ -25,12 +25,7 @@ def parse_ref(ref_file, chrom, ref, pop_all, n_pop):
             header = next(ff)
             for line in ff:
                 ll = (line.strip()).split()
-                snp_include = 1
-                for pp in range(n_pop):
-                    pop_index = pop_list.index(pop_all[pp].upper()) + 10
-                    pop_exist = int(ll[pop_index])
-                    snp_include = snp_include * pop_exist
-                if (int(ll[0]) == chrom) and (snp_include != 0):
+                if int(ll[0]) == chrom:
                     ref_dict['CHR'].append(chrom)
                     ref_dict['SNP'].append(ll[1])
                     ref_dict['BP'].append(int(ll[2]))
