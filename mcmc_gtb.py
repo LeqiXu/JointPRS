@@ -7,7 +7,6 @@ Markov Chain Monte Carlo (MCMC) sampler for JointPRS.
 
 import math
 import numpy as np
-import scipy as sp
 from scipy import linalg
 from numpy import random
 
@@ -245,8 +244,8 @@ def mcmc(a, b, phi, rho_cons, snp_dict, beta_sumstat, frq_dict, idx_dict, n, ld_
 
     # meta
     if meta == 'TRUE':
-        vv = sp.zeros((p_tot,1))
-        zz = sp.zeros((p_tot,1))
+        vv = np.zeros(p_tot)
+        zz = np.zeros(p_tot)
         for pp in range(n_pop):
             vv[idx_dict[pp]] += 1.0/(beta_sq_est[pp]-beta_est[pp]**2)
             zz[idx_dict[pp]] += 1.0/(beta_sq_est[pp]-beta_est[pp]**2)*beta_est[pp]
