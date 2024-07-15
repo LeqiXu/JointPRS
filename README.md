@@ -1,7 +1,9 @@
 # JointPRS
-JointPRS is a cross-population PRS model that only requires GWAS summary statistics and LD reference panel from multiple populations. It has two versions: 
-- **JointPRS-auto**: **no need** for a validation dataset.
-- **JointPRS**: requires a validation dataset for tuning parameters. 
+JointPRS is a multi-population PRS model that only requires GWAS summary statistics and LD reference panel from multiple populations. When individual-level tuning data is available, it adpots a data-adaptive apporach that combines meta-analysis and tuning strategies. Based on the availability of tuning data, JointPRS has two implementations: 
+- **JointPRS-auto**: **No** tuning data. [Compute Auto Version of JointPRS]
+- **JointPRS**: **Exist** tuning data. [Compute Meta Version and Tune Version of JointPRS, and Utilize a Data-adaptive Approach to Select the Optimal Version]
+
+![JointPRS_workflow](https://github.com/user-attachments/assets/15ca8ae6-c786-473e-8526-88e5e699f964)
 
 ## Update History
 **Sept 30, 2023**: Repository made public.
