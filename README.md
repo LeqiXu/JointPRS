@@ -56,7 +56,7 @@ Here
 
 In addition, you need to obtain the sample size for the summary statistics, and take the median value if the sample size is different across SNPs.
 
-### 4. JointPRS Implementation
+### 4. JointPRS Model Implementation
 In this section, we assume we need to model four populations jointly. Please modify the code to reflect the actual number of populations present in your data.
 
 #### 4.1 Preparation
@@ -94,6 +94,8 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 When there is no tuning data, we compute the auto version of JointPRS.
 
 - Auto Version:
+  - Auto version exclusively utilizes GWAS summary statistics and does not require any parameter tuning.
+  - Code
   ```
   python ${JointPRS_path}/JointPRS.py \
   --ref_dir=${reference_path}/${type} \
@@ -111,8 +113,8 @@ When there is no tuning data, we compute the auto version of JointPRS.
 When there exist tuning data, we need to compute the meta version and the tune version of JointPRS.
 
 - Meta Version:
-  
-- Tune Version
+  Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing the METAL software
+- Tune Version:
 ```
 python ${JointPRS_path}/JointPRS.py \
 --ref_dir=${reference_path}/${type} \
