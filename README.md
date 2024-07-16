@@ -94,26 +94,59 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 When there is no tuning data, we compute the auto version of JointPRS.
 
 - Auto Version:
-  - Auto version exclusively utilizes GWAS summary statistics and does not require any parameter tuning.
-  - Code
-  ```
-  python ${JointPRS_path}/JointPRS.py \
-  --ref_dir=${reference_path}/${type} \
-  --bim_prefix=${bim_path}/${bim_prefix} \
-  --pop=${pop1},${pop2},${pop3},${pop4} \
-  --rho_cons=${r1},${r2},${r3},${r4} \
-  --sst_file=${sst1},${sst2},${sst3},${sst4} \
-  --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
-  --chrom=${chr} \
-  --out_dir=${outcome_path} \
-  --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
-  ```  
+  - Auto version exclusively utilizes the original GWAS summary statistics and does not require any parameter tuning.
+  - Code:
+    ```
+    python ${JointPRS_path}/JointPRS.py \
+    --ref_dir=${reference_path}/${type} \
+    --bim_prefix=${bim_path}/${bim_prefix} \
+    --pop=${pop1},${pop2},${pop3},${pop4} \
+    --rho_cons=${r1},${r2},${r3},${r4} \
+    --sst_file=${sst1},${sst2},${sst3},${sst4} \
+    --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+    --chrom=${chr} \
+    --out_dir=${outcome_path} \
+    --out_name=JointPRS_auto_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
+    ```
 
 #### 4.3 Exist Tuning Data Scenario: JointPRS
 When there exist tuning data, we need to compute the meta version and the tune version of JointPRS.
 
 - Meta Version:
-  Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing the METAL software
+  - Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing [the METAL software](https://csg.sph.umich.edu/abecasis/metal/)
+  - Example Code:
+    ```
+    /gpfs/gibbs/pi/zhao/lx94/Software/generic-metal/metal
+    SCHEME   STDERR
+    MARKER   SNP
+    WEIGHT   N
+    ALLELE   A1 A2
+    FREQ     MAF
+    EFFECT   BETA
+    STDERR   SE
+    PVAL     P
+
+    PROCESS /gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/data/summary_data/clean/HDL_AFR_inter_clean.txt
+    PROCESS /gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/data/summary_data/UKB_glm/same_cohort/HDL_AFR_UKB_val_1.txt
+    OUTFILE /gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/data/summary_data/with_UKB_meta/same_cohort/HDL_AFR_inter_UKB_val_1_meta .tbl
+    ANALYZE
+    QUIT
+    ```
+  - Meta version utilizes the updated GWAS summary statistics as input data and does not required any parameter tuning.
+  - Code:
+    ```
+    python ${JointPRS_path}/JointPRS.py \
+    --ref_dir=${reference_path}/${type} \
+    --bim_prefix=${bim_path}/${bim_prefix} \
+    --pop=${pop1},${pop2},${pop3},${pop4} \
+    --rho_cons=${r1},${r2},${r3},${r4} \
+    --sst_file=${sst1},${sst2},${sst3},${sst4} \
+    --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+    --chrom=${chr} \
+    --out_dir=${outcome_path} \
+    --out_name=JointPRS_meta_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
+    ```
+    
 - Tune Version:
 ```
 python ${JointPRS_path}/JointPRS.py \
