@@ -305,11 +305,10 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
     }
     }
     ``` 
-- 
+- **Select Between Meta Version and Tune Version**:
+  - Perform model selection using F-test for continuous traits and $chi^2$-test for binary traits.
 
 **Note: We recommend standardize the polygenic scores (i.e., converting the scores to zero mean and unit variance) in both tuning and testing datasets before linear combination.**
-
-we use **JointPRS** and **JointPRS-auto**. We recommend for each global shrinkage parameter `${param_phi}` from set **{1e-06, 1e-04, 1e-02, 1e+00, auto}**, and learn . Then 
 
 
 ## Example
