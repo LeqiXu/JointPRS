@@ -93,7 +93,7 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 #### 4.2 No Tuning Data Scenario: JointPRS-auto
 When there is no tuning data, we compute the auto version of JointPRS.
 
-- Auto Version:
+- **Auto Version**:
   - Auto version utilizes the original GWAS summary statistics as input data and does not require any parameter tuning.
   - Code:
     ```
@@ -112,7 +112,7 @@ When there is no tuning data, we compute the auto version of JointPRS.
 #### 4.3 Exist Tuning Data Scenario: JointPRS
 When there exist tuning data, we need to compute the meta version and the tune version of JointPRS.
 
-- Meta Version:
+- **Meta Version**:
   - Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing [the METAL software](https://csg.sph.umich.edu/abecasis/metal/).
   - Example Code:
     ```
@@ -147,7 +147,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
     --out_name=JointPRS_meta_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
     ```
     
-- Tune Version:
+- **Tune Version**:
   - Tune version utilizes the original GWAS summary statistics as input data and choose the global shrinkage parameter from a broader range **{1e-06,1e-04,1e-02,1e+00,auto}**.
   - Code for **{auto}** is equivalent to the implementation of JointPRS-auto:
     ```
@@ -162,7 +162,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
     --out_dir=${outcome_path} \
     --out_name=JointPRS_auto_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
     ```
-  - Code for **{1e-06,1e-04,1e-02,1e+00}** choices:
+  - Code for **{1e-06,1e-04,1e-02,1e+00}**:
     ```
     python ${JointPRS_path}/JointPRS.py \
     --ref_dir=${reference_path}/${type} \
