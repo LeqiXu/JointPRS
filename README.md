@@ -94,7 +94,7 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 When there is no tuning data, we compute the auto version of JointPRS.
 
 - Auto Version:
-  - Auto version exclusively utilizes the original GWAS summary statistics and does not require any parameter tuning.
+  - Auto version utilizes the original GWAS summary statistics as input data and does not require any parameter tuning.
   - Code:
     ```
     python ${JointPRS_path}/JointPRS.py \
@@ -148,19 +148,22 @@ When there exist tuning data, we need to compute the meta version and the tune v
     ```
     
 - Tune Version:
-```
-python ${JointPRS_path}/JointPRS.py \
---ref_dir=${reference_path}/${type} \
---bim_prefix=${bim_path}/${bim_prefix} \
---pop=${pop1},${pop2},${pop3},${pop4} \
---rho_cons=${r1},${r2},${r3},${r4} \
---sst_file=${sst1},${sst2},${sst3},${sst4} \
---n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
---chrom=${chr} \
---phi=${param_phi} \
---out_dir=${outcome_path} \
---out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
-```
+  - Tune version utilizes the original GWAS summary statistics as input data and choose the global shrinkage parameter from a broader range **{1e-06,1e-04,1e-02,1e+00,auto}**.
+  - Code for **{auto}** is equivalent to the implementation of JointPRS-auto
+  - Code for **{1e-06,1e-04,1e-02,1e+00}** choices:
+    ```
+    python ${JointPRS_path}/JointPRS.py \
+    --ref_dir=${reference_path}/${type} \
+    --bim_prefix=${bim_path}/${bim_prefix} \
+    --pop=${pop1},${pop2},${pop3},${pop4} \
+    --rho_cons=${r1},${r2},${r3},${r4} \
+    --sst_file=${sst1},${sst2},${sst3},${sst4} \
+    --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+    --chrom=${chr} \
+    --phi=${param_phi} \
+    --out_dir=${outcome_path} \
+    --out_name=JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
+    ```
 
 #### 4.4 Output
 **JointPRS has two types of outputs:**
