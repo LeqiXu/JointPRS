@@ -30,7 +30,7 @@ conda activate JointPRS
 ```
 
 ### 2. LD Reference Panel Download
-We use reference panels from [PRS-CSx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory
+We use reference panels from [PRS-CSx](https://github.com/getian107/PRScsx#getting-started) and you can follow their instructions to download them. It is strongly recommended to create two subfolders within your reference directory:
 
 - **1KG**: This subfolder should contain LD reference panels constructed using the 1000 Genomes Project phase 3 samples and the corresponding SNP information file.
 - **UKBB**: This subfolder should contain LD reference panels constructed using the UK Biobank data and the corresponding SNP information file.
@@ -113,7 +113,7 @@ When there is no tuning data, we compute the auto version of JointPRS.
 When there exist tuning data, we need to compute the meta version and the tune version of JointPRS.
 
 - Meta Version:
-  - Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing [the METAL software](https://csg.sph.umich.edu/abecasis/metal/)
+  - Meta version leverages meta-analysis to integrate the orginal GWAS summary statistics with tuning datasets, utilizing [the METAL software](https://csg.sph.umich.edu/abecasis/metal/).
   - Example Code:
     ```
     /gpfs/gibbs/pi/zhao/lx94/Software/generic-metal/metal
@@ -149,7 +149,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
     
 - Tune Version:
   - Tune version utilizes the original GWAS summary statistics as input data and choose the global shrinkage parameter from a broader range **{1e-06,1e-04,1e-02,1e+00,auto}**.
-  - Code for **{auto}** is equivalent to the implementation of JointPRS-auto
+  - Code for **{auto}** is equivalent to the implementation of JointPRS-auto.
   - Code for **{1e-06,1e-04,1e-02,1e+00}** choices:
     ```
     python ${JointPRS_path}/JointPRS.py \
