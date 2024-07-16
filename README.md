@@ -226,16 +226,15 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
   - Obtain JointPRS_tune_PRS_optimal_linear: Select the optimal PRS across global shrinkage parameter choices in the tuning dataset.
   - Example Code:
     ```
-    # Step4: Select the optimal parameter and obtain the corresponding weight
-library(data.table)
-library(stringr)
-library(dplyr)
+    library(data.table)
+    library(stringr)
+    library(dplyr)
 
-param_list = c("auto","1e-06","1e-04","1e-02","1e+00")
+    param_list = c("auto","1e-06","1e-04","1e-02","1e+00")
 
-for(s in c(1:5)){
-for(trait in c("HDL")){
-for(pop in c("EAS","AFR","SAS")){
+    for(s in c(1:5)){
+    for(trait in c("HDL")){
+    for(pop in c("EAS","AFR","SAS")){
     
     Trait_JointPRS_phiauto_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phiauto.sscore"))
     Trait_JointPRS_phi1e_06_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phi1e-06.sscore"))
@@ -300,13 +299,11 @@ for(pop in c("EAS","AFR","SAS")){
 
     Trait_JointPRS_optimal_weight = JointPRS_val_weight[JointPRS_index,]
     Trait_JointPRS_optimal_phi = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_phi",best_param,"_beta.txt"))
-
-    write.table(Trait_JointPRS_optimal_weight,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_SAS_weight_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+      write.table(Trait_JointPRS_optimal_weight,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_SAS_weight_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
     write.table(Trait_JointPRS_optimal_phi,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_SAS_beta_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
-
-}
-}
-}
+    }
+    }
+    }
     ``` 
 - 
 
