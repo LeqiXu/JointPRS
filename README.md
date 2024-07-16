@@ -306,7 +306,7 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
     }
     ``` 
 - **Select Between Meta Version and Tune Version**:
-  - Perform model selection using F-test for continuous traits and $chi^2$-test for binary traits.
+  - Perform model selection using F-test for continuous traits and $\chi^2$-test for binary traits.
 
 **Note: We recommend standardize the polygenic scores (i.e., converting the scores to zero mean and unit variance) in both tuning and testing datasets before linear combination.**
 
