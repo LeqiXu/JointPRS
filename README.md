@@ -80,17 +80,19 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 - `${reference_path}`: full path to the reference directory; `${type}`: **1KG** or **UKBB** if you construct two subfolders as recommended.
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
-- `${param_phi}`: **remove** this line if you use **JointPRS-auto**; use set **{1e-06, 1e-04, 1e-02, 1e+00}** if you use **JointPRS**.
+- `${param_phi}`: the global shrinkage prior that will be discussed later based on different versions of JointPRS.
 - `${chr}`: the chromosome we want to consider (1-22) and we recommend estimate 22 chromosomes in parallel.
 
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
 - `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
-  * `r1=1,r2=1,r3=1,r4=1`: if you use **JointPRS-auto** or use **JointPRS** and `${param_phi}` comes from set **{1e-04, 1e-02, 1e+00}**. This setting represents the positive correlation assumption.
-  * `r1=0,r2=0,r3=0,r4=0`: if you use **JointPRS** and `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRS-CSx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
+  * `r1=1,r2=1,r3=1,r4=1`: if `${param_phi}` does **not** come from set **{1e-06}**. This setting represents the positive correlation assumption.
+  * `r1=0,r2=0,r3=0,r4=0`: if `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRS-CSx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
 - `${sst1},${sst2},${sst3},${sst4}`: full path and full name of the summary statistics for the corresponding poopulation.
 - `${sample_size1},${sample_size2},${sample_size3},${sample_size4}`: sample size for the corresponding summary statistics, and take the median value if the sample size is different across SNPs.
 
-#### 4.2 JointPRS-auto
+#### 4.2 No Tuning Data Scenario: JointPRS-auto
+When there is no tuning data, we use the auto version of JointPRS, so we remove `${param_phi}` here.
+
 ```
 python ${JointPRS_path}/JointPRS.py \
 --ref_dir=${reference_path}/${type} \
@@ -104,7 +106,7 @@ python ${JointPRS_path}/JointPRS.py \
 --out_name=JointPRS_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
 
-#### 4.3 JointPRS
+#### 4.3 Exist Tuning Data Scenario: JointPRS
 ```
 python ${JointPRS_path}/JointPRS.py \
 --ref_dir=${reference_path}/${type} \
