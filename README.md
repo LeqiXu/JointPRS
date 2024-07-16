@@ -425,7 +425,7 @@ The example contains EUR, EAS, AFR and GWAS summary statistics and a bim file fo
 - The summary statistics comes from [GLGC](https://csg.sph.umich.edu/willer/public/glgc-lipids2021/).
 - The bim file comes from the [1000 Genome Project](https://www.internationalgenome.org/data).
 
-The following code is a demo to use the example data:
+The following code is a demo to use the example data for section **4. JointPRS Model Implementation**:
 ```
 conda activate JointPRS
 
@@ -453,7 +453,7 @@ python ${JointPRS_path}/JointPRS.py \
 --out_dir=${outcome_path} \
 --out_name=JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
-Here you still need to specify `JointPRS_path` and `reference_path` by yourself.
+Here you still need to specify `JointPRS_path` and `reference_path` by yourself. For further implementation of the JointPRS data-adaptive approach when the individual-level tuning data is available, please use your own tuning data and follow the pipeline described in section **5. JointPRS Data-Adaptive Approach**.
 
 ## Acknowledgment
 Part of the code is adapted from [PRS-CSx](https://github.com/getian107/PRScsx/tree/master). We thank Dr. Tian Ge for sharing his code and LD reference panels.
