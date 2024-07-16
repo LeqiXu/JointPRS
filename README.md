@@ -231,16 +231,17 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
     library(dplyr)
 
     param_list = c("auto","1e-06","1e-04","1e-02","1e+00")
+    type="1KG"
 
     for(s in c(1:5)){
     for(trait in c("HDL")){
     for(pop in c("EAS","AFR","SAS")){
     
-    Trait_JointPRS_phiauto_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phiauto.sscore"))
-    Trait_JointPRS_phi1e_06_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phi1e-06.sscore"))
-    Trait_JointPRS_phi1e_04_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phi1e-04.sscore"))
-    Trait_JointPRS_phi1e_02_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phi1e-02.sscore"))
-    Trait_JointPRS_phi1e_00_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_JointPRS_tune_",pop,"_phi1e+00.sscore"))
+    Trait_JointPRS_phiauto_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phiauto.sscore"))
+    Trait_JointPRS_phi1e_06_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phi1e-06.sscore"))
+    Trait_JointPRS_phi1e_04_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phi1e-04.sscore"))
+    Trait_JointPRS_phi1e_02_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phi1e-02.sscore"))
+    Trait_JointPRS_phi1e_00_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phi1e+00.sscore"))
 
     scale_pheno = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/data/ukbb_data/pheno_data/",trait,"/split/",trait,"_scale_",pop,"_val_",s,"_doubleid.tsv"))
     scale_pheno =scale_pheno[,c(1,3)]
@@ -307,6 +308,114 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
     ``` 
 - **Select Between Meta Version and Tune Version**:
   - Perform model selection using F-test for continuous traits and $\chi^2$-test for binary traits.
+  - Example Code for continuous traits:
+    ```
+    library(data.table)
+    library(stringr)
+    library(dplyr)
+
+    param_list = c("auto","1e-06","1e-04","1e-02","1e+00")
+    type="1KG"
+
+    for(s in c(1:5)){
+    for(trait in c("HDL")){
+    for(pop in c("EAS","AFR","SAS")){
+    
+    Trait_JointPRS_phiauto_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_AFR_SAS_",type,"_JointPRS_tune_",pop,"_phiauto.sscore"))
+    
+    scale_pheno = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/data/ukbb_data/pheno_data/",trait,"/split/",trait,"_scale_",pop,"_val_",s,"_doubleid.tsv"))
+    scale_pheno =scale_pheno[,c(1,3)]
+    colnames(scale_pheno) = c("eid","pheno")
+
+    ## validation
+    ## JointPRS
+    Trait_JointPRS_phiauto_val = Trait_JointPRS_phiauto_val[,c(1,5,6,7,8)]
+    colnames(Trait_JointPRS_phiauto_val) = c("eid","EUR","EAS","AFR","SAS")
+    Trait_JointPRS_phiauto_val = scale_pheno[Trait_JointPRS_phiauto_val, on = .(eid = eid)]
+    Trait_JointPRS_phiauto_val = Trait_JointPRS_phiauto_val[,c(3:6) := lapply(.SD,scale),.SDcols = c(3:6)]
+    Trait_JointPRS_phiauto_val = na.omit(Trait_JointPRS_phiauto_val)
+    col_idx = c(2,which(colnames(Trait_JointPRS_phiauto_val) == pop))
+    
+    # JointPRS validation data select the best performed parameter
+    lm_JointPRS_phiauto_val_sub = lm(pheno ~ . + 0, data = Trait_JointPRS_phiauto_val[,..col_idx])
+    lm_JointPRS_phiauto_val_full = lm(pheno ~ . + 0, data = Trait_JointPRS_phiauto_val[,c(2:6)])
+
+    R2_sub = data.table(JointPRS_phiauto = summary(lm_JointPRS_phiauto_val_sub)$`r.squared`)
+    R2_full = data.table(JointPRS_phiauto = summary(lm_JointPRS_phiauto_val_full)$`r.squared`)
+
+    p_value = anova(lm_JointPRS_phiauto_val_sub,lm_JointPRS_phiauto_val_full)$`Pr(>F)`
+    p_value = na.omit(p_value)
+
+    write.table(R2_sub,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_SAS_r2_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    write.table(R2_full,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_SAS_r2_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    write.table(p_value, paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_SAS_pvalue_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    }
+    }
+    }
+    ```
+  - Example Code for binary traits:
+    ```
+    library(data.table)
+    library(stringr)
+    library(dplyr)
+    library(pROC)
+
+    param_list = c("auto","1e-06","1e-04","1e-02","1e+00")
+    type="1KG"
+
+    for(s in c(1:5)){
+    for(trait in c("CAD")){
+    for(pop in c("EAS")){
+    
+    Trait_JointPRS_phiauto_val = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/same_cohort/JointPRS/",trait,"_EUR_EAS_",type,"_JointPRS_tune_",pop,"_phiauto.sscore"))
+    
+    pheno = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/data/ukbb_data/pheno_data/",trait,"/split/",trait,"_",pop,"_val_",s,"_doubleid.tsv"))
+    pheno =pheno[,c(1,3)]
+    colnames(pheno) = c("eid","pheno")
+
+    ## validation
+    ## JointPRS
+    Trait_JointPRS_phiauto_val = Trait_JointPRS_phiauto_val[,c(1,5,6)]
+    colnames(Trait_JointPRS_phiauto_val) = c("eid","EUR","EAS")
+    Trait_JointPRS_phiauto_val = pheno[Trait_JointPRS_phiauto_val, on = .(eid = eid)]
+    Trait_JointPRS_phiauto_val = Trait_JointPRS_phiauto_val[,c(3:4) := lapply(.SD,scale),.SDcols = c(3:4)]
+    Trait_JointPRS_phiauto_val = na.omit(Trait_JointPRS_phiauto_val)
+    col_idx = c(2,which(colnames(Trait_JointPRS_phiauto_val) == pop))
+    
+    # JointPRS validation data select the best performed parameter
+    glm_JointPRS_phiauto_val_sub = glm(pheno ~ . + 0, data = Trait_JointPRS_phiauto_val[,..col_idx],family=binomial(link="logit"))
+    glm_JointPRS_phiauto_val_full = glm(pheno ~ . + 0, data = Trait_JointPRS_phiauto_val[,c(2:4)],family=binomial(link="logit"))
+
+    AUC_sub = data.table(JointPRS_phiauto = roc(Trait_JointPRS_phiauto_val$pheno, predict(glm_JointPRS_phiauto_val_sub, type="response"), quiet=T, plot=F)$auc)
+    AUC_full = data.table(JointPRS_phiauto = roc(Trait_JointPRS_phiauto_val$pheno, predict(glm_JointPRS_phiauto_val_full, type="response"), quiet=T, plot=F)$auc)
+
+    p_value = anova(glm_JointPRS_phiauto_val_sub,glm_JointPRS_phiauto_val_full,test="Chisq")$`Pr(>Chi)`
+    p_value = na.omit(p_value)
+
+    write.table(AUC_sub,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_auc_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    write.table(AUC_full,paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_auc_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    write.table(p_value, paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_pvalue_",pop,".txt"),quote=F,sep='\t',row.names=F,col.names=T)
+    }
+    }
+    }
+    ```
+  - Example Code for final model selection:
+    - Continuous traits:
+      ```
+      if (R2_sub > 0.01 && (R2_full - R2_sub > 0) && pvalue < 0.05){
+      JointPRS_PRS = JointPRS_tune_PRS_optimal_linear
+      } else {
+      JointPRS_PRS = JointPRS_meta_PRS
+      }
+      ```
+    - Binary traits:
+      ```
+      if (AUC_sub > 0.501 && (AUC_full - AUC_sub > 0) && pvalue < 0.05){
+      JointPRS_PRS = JointPRS_tune_PRS_optimal_linear
+      } else {
+      JointPRS_PRS = JointPRS_meta_PRS
+      }
+      ```
 
 **Note: We recommend standardize the polygenic scores (i.e., converting the scores to zero mean and unit variance) in both tuning and testing datasets before linear combination.**
 
