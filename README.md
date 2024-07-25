@@ -195,7 +195,9 @@ When there exist tuning data, we need to compute the meta version and the tune v
 5.202891308281465399e-01 3.986037958722946639e-01 4.418160360865302505e-01 9.999999999999896749e-01
 ```
 
-**For the polygenic risk score calculation**, we recommend you to use PLINK/2 --score command (https://www.cog-genomics.org/plink/2.0/score) which requires three columns: rsID, A1, and posterior effect size estimates. **Additionally, we suggest you organize beta file from 22 chromosomes into one beta file as the input in PLINK/2**
+**For the polygenic risk score calculation**, we recommend utilizing the PLINK/2 --score command, which requires three columns: rsID, A1, and posterior effect size estimates. Detailed documentation for the --score command can be found on the [PLINK/2 website](https://www.cog-genomics.org/plink/2.0/score) 
+
+**We recommend integrating the beta files from all 22 chromosomes into a single beta file to be used as input in PLINK/2.**
 - Example Code:
   ```
   target_geno=
@@ -208,6 +210,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
   --score JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}_${target_pop}_pst_eff_a1_b0.5_phi${param_phi}.txt 2 4 6 cols=+scoresums,-scoreavgs \
   --out ${trait}_${pop1}_${pop2}_${pop3}_${pop4}_${type}_JointPRS_tune_${target_pop}_phi${param_phi}
   ```
+**Note:** The parameter **cols=+scoresums,-scoreavgs** is unnecessary if a single integrated beta file for all chromosomes is used as input to compute the score. However, it is **required** if the scores are computed separately for each of the 22 chromosomes.
 
 **For further score combination**, it depends on the availability of the tuning dataset:
 - If there is **no** tuning dataset, we use **JointPRS-auto**, and the genome-wide score of the target population from the previous step will be the final score for complex traits prediction.
