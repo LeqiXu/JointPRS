@@ -210,7 +210,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
   --score JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}_${target_pop}_pst_eff_a1_b0.5_phi${param_phi}.txt 2 4 6 cols=+scoresums,-scoreavgs \
   --out ${trait}_${pop1}_${pop2}_${pop3}_${pop4}_${type}_JointPRS_tune_${target_pop}_phi${param_phi}
   ```
-**Note:** The parameter **cols=+scoresums,-scoreavgs** is unnecessary if a single integrated beta file for all chromosomes is used as input to compute the score. However, it is **required** if the scores are computed separately for each of the 22 chromosomes.
+**Note:** The parameter `cols=+scoresums,-scoreavgs` is unnecessary if a single integrated beta file for all chromosomes is used as input to compute the score. However, it is **required** if the scores are computed separately for each of the 22 chromosomes.
 
 **For further score combination**, it depends on the availability of the tuning dataset:
 - If there is **no** tuning dataset, we use **JointPRS-auto**, and the genome-wide score of the target population from the previous step will be the final score for complex traits prediction.
