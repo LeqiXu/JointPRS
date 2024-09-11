@@ -262,9 +262,10 @@ def mcmc(a, b, phi, rho_cons, snp_dict, beta_sumstat, frq_dict, idx_dict, n, ld_
         bp_pp = [snp_dict['BP'][ii] for ii in idx_dict[pp]]
         a1_pp = [snp_dict['A1'][ii] for ii in idx_dict[pp]]
         a2_pp = [snp_dict['A2'][ii] for ii in idx_dict[pp]]
+        psi_est_pp = [psi_est[ii] for ii in idx_dict[pp]]
 
         with open(eff_file, 'w') as ff:
-            for snp, bp, a1, a2, beta, psi in zip(snp_pp, bp_pp, a1_pp, a2_pp, beta_est[pp], psi_est):
+            for snp, bp, a1, a2, beta, psi in zip(snp_pp, bp_pp, a1_pp, a2_pp, beta_est[pp], psi_est_pp):
                 ff.write('%d\t%s\t%d\t%s\t%s\t%.6e\t%.6e\n' % (chrom, snp, bp, a1, a2, beta, psi))
 
     # write correlation matrix
