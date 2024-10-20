@@ -463,5 +463,5 @@ Part of the code is adapted from [PRS-CSx](https://github.com/getian107/PRScsx/t
 Please direct any problems or questions to Leqi Xu (leqi.xu@yale.edu).
 
 ## Citation
-Xu L, Zhou G, Jiang W, Guan L, Zhao H. Leveraging genetic correlations and multiple populations to improve genetic risk prediction for non-European populations. bioRxiv. 2023 Nov 1:2023-10. (https://www.biorxiv.org/content/10.1101/2023.10.29.564615v3)
+Xu L, Zhou G, Jiang W, Zhang H, Dong Y, Guan L, Zhao H. JointPRS: A Data-Adaptive Framework for Multi-Population Genetic Risk Prediction Incorporating Genetic Correlation. bioRxiv. 2024 Sept 1:2023-10. (https://www.biorxiv.org/content/10.1101/2023.10.29.564615v4)
 
