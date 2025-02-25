@@ -8,6 +8,8 @@ JointPRS is a multi-population PRS model that only requires GWAS summary statist
 
 ![JointPRS_workflow](https://github.com/user-attachments/assets/15ca8ae6-c786-473e-8526-88e5e699f964)
 
+For the **analysis code** of **JointPRS**, please visit: [https://github.com/LeqiXu/JointPRS_analysis](https://github.com/LeqiXu/JointPRS_analysis)
+
 ## Update History
 **Sept 30, 2023**: Repository made public.
 
