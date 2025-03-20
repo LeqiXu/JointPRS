@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/698658371.svg)](https://doi.org/10.5281/zenodo.15060557)
+
 # JointPRS
 JointPRS is a multi-population PRS model that only requires GWAS summary statistics and LD reference panel from multiple populations. When individual-level tuning data is available, it adpots a data-adaptive apporach that combines meta-analysis and tuning strategies. Based on the availability of tuning data, JointPRS has two implementations: 
 - **JointPRS-auto**: **No** tuning data scenario.
