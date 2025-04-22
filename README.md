@@ -246,39 +246,48 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
 **Note: We recommend standardize the polygenic scores (i.e., converting the scores to zero mean and unit variance) in both tuning and testing datasets before linear combination.**
 
 ## Example
-The example contains EUR, EAS, AFR and GWAS summary statistics and a bim file for 500 SNPs on chromosome 1 for HDL.
-- The summary statistics comes from [GLGC](https://csg.sph.umich.edu/willer/public/glgc-lipids2021/).
-- The bim file comes from the [1000 Genome Project](https://www.internationalgenome.org/data).
+This example demonstrates how to run JointPRS on HDL summary statistics (EUR, EAS, AFR, SAS) for 500 SNPs from chromosome 1:
 
-The following code is a demo to use the example data for section **4. JointPRS Model Implementation**:
-```
+- **Summary statistics**: from [GLGC](https://csg.sph.umich.edu/willer/public/glgc-lipids2021/)  
+- **BIM file**: from the [1000 Genomes Project](https://www.internationalgenome.org/data)
+
+The following sample code calls the `JointPRS.py` script (section **4. JointPRS Model Implementation**). You should replace `JointPRS_path` and `reference_path` with your local paths.  
+
+```bash
 conda activate JointPRS
 
 JointPRS_path=
 reference_path= ; type=1KG
-bim_path=${JointPRS_path}/example_data; bim_prefix=example
+bim_path=${JointPRS_path}/example_data
+bim_prefix=example
 outcome_path=${JointPRS_path}/example_data
 param_phi=1e-04
 chr=1
 
 pop1=EUR; pop2=EAS; pop3=AFR; pop4=SAS
 r1=1; r2=1; r3=1; r4=1
-sst1=${JointPRS_path}/example_data/EUR_sumstat.txt; sst2=${JointPRS_path}/example_data/EAS_sumstat.txt; sst3=${JointPRS_path}/example_data/AFR_sumstat.txt; sst4=${JointPRS_path}/example_data/SAS_sumstat.txt 
-sample_size1=885546; sample_size2=116404; sample_size3=90804; sample_size4=33953
+sst1=${JointPRS_path}/example_data/EUR_sumstat.txt
+sst2=${JointPRS_path}/example_data/EAS_sumstat.txt
+sst3=${JointPRS_path}/example_data/AFR_sumstat.txt
+sst4=${JointPRS_path}/example_data/SAS_sumstat.txt
+sample_size1=885546
+sample_size2=116404
+sample_size3=90804
+sample_size4=33953
 
 python ${JointPRS_path}/JointPRS.py \
---ref_dir=${reference_path}/${type} \
---bim_prefix=${bim_path}/${bim_prefix} \
---pop=${pop1},${pop2},${pop3},${pop4} \
---rho_cons=${r1},${r2},${r3},${r4} \
---sst_file=${sst1},${sst2},${sst3},${sst4} \
---n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
---chrom=${chr} \
---phi=${param_phi} \
---out_dir=${outcome_path} \
---out_name=JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
+  --ref_dir=${reference_path}/${type} \
+  --bim_prefix=${bim_path}/${bim_prefix} \
+  --pop=${pop1},${pop2},${pop3},${pop4} \
+  --rho_cons=${r1},${r2},${r3},${r4} \
+  --sst_file=${sst1},${sst2},${sst3},${sst4} \
+  --n_gwas=${sample_size1},${sample_size2},${sample_size3},${sample_size4} \
+  --chrom=${chr} \
+  --phi=${param_phi} \
+  --out_dir=${outcome_path} \
+  --out_name=JointPRS_tune_${pop1}_${pop2}_${pop3}_${pop4}_${r1}${r2}${r3}${r4}_${type}
 ```
-Here you still need to specify `JointPRS_path` and `reference_path` by yourself. For further implementation of the JointPRS data-adaptive approach when the individual-level tuning data is available, please use your own tuning data and follow the pipeline described in section **5. JointPRS Data-Adaptive Approach**.
+For **full JointPRS implementation**, please follow the steps in [Comprehensive JointPRS Pipelines](#comprehensive-jointprs-pipelines).
 
 ## Acknowledgment
 Part of the code is adapted from [PRS-CSx](https://github.com/getian107/PRScsx/tree/master). We thank Dr. Tian Ge for sharing his code and LD reference panels.
