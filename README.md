@@ -15,8 +15,7 @@ Based on whether tuning data is available, JointPRS has two implementations:
 
 ## Comprehensive JointPRS Pipelines
 
-Below is an overview of different scenarios and the corresponding scripts.  
-For detailed code, see the [JointPRS_analysis repository](https://github.com/LeqiXu/JointPRS_analysis).
+Below is an overview of different scenarios and the corresponding scripts. For detailed code, see the [JointPRS_analysis repository](https://github.com/LeqiXu/JointPRS_analysis).
 
 | **Scenario & Description**                                                                                                                                       | **Scripts**                                                                                                                                                                                                                                                                                                                                                                                               |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
