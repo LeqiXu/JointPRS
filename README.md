@@ -5,7 +5,7 @@ JointPRS is a multi-population PRS model that only requires GWAS summary statist
 
 Based on whether tuning data is available, JointPRS has two implementations:
 - **JointPRS-auto** (no tuning data):  
-  Computes the “auto” version of JointPRS directly from the training data.
+  Computes the “auto” version of JointPRS directly from GWAS summary statistics.
 - **JointPRS** (with tuning data):  
   Computes both the “meta” and “tune” versions, and then uses a data-adaptive approach to pick the optimal JointPRS.
 
