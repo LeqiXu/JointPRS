@@ -231,7 +231,7 @@ When there exist tuning data, we need to compute the meta version and the tune v
 - If there is **no** tuning dataset, we use **JointPRS-auto**, and the genome-wide score of the target population from the previous step will be the final score for complex traits prediction.
 - If there **exists** a tuning dataset, we further use a data-adaptive approach to select between the meta version and the tune version, as detailed in section **5. JointPRS Data-Adaptive Approach**.
 
-#### 5. JointPRS Data-Adaptive Approach
+### 5. JointPRS Data-Adaptive Approach
 JointPRS data-adaptive approach is performed only when the tuning dataset is available, aiming to select the optimal PRS between the meta version and tune version.
 
 - **Meta Version**:
