@@ -250,9 +250,9 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
        p_value = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_SAS_AMR_pvalue_",pop,".txt"))
 
        if (R2_sub > 0.01 && (R2_full - R2_sub > 0) && p_value < 0.05){
-         Trait_JointPRS_final = Trait_JointPRS_tune
+         JointPRS_final = JointPRS_meta_PRS
        } else {
-         Trait_JointPRS_final = Trait_JointPRS_meta
+         JointPRS_final = JointPRS_tune_PRS_optimal_linear
        }
        ```
      - Binary traits:
@@ -262,9 +262,9 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
        p_value = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_pvalue_",pop,".txt"))
 
        if (AUC_sub > 0.501 && (AUC_full - AUC_sub > 0) && p_value < 0.05){
-         Trait_JointPRS_final = Trait_JointPRS_tune
+         JointPRS_final = JointPRS_meta_PRS
        } else {
-         Trait_JointPRS_final = Trait_JointPRS_meta
+         JointPRS_final = JointPRS_tune_PRS_optimal_linear
        }
        ```
 
