@@ -242,6 +242,31 @@ JointPRS data-adaptive approach is performed only when the tuning dataset is ava
   - Obtain JointPRS_tune_PRS_optimal_linear: Select the optimal PRS across global shrinkage parameter choices in the tuning dataset.
 - **Select Between Meta Version and Tune Version**:
   - Perform model selection using F-test for continuous traits and $\chi^2$-test for binary traits.
+  - Example Code for final model selection:
+     - Continuous traits:
+       ```
+       JointPRS_meta_val_R2 = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_SAS_AMR_r2_",pop,".txt"))
+       JointPRS_tune_val_R2 = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_SAS_AMR_r2_",pop,".txt"))
+       JointPRS_meta_val_pvalue = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_SAS_AMR_pvalue_",pop,".txt"))
+
+       if (JointPRS_meta_val_R2 > 0.01 && (JointPRS_tune_val_R2 - JointPRS_meta_val_R2 > 0) && JointPRS_meta_val_pvalue < 0.05){
+         Trait_JointPRS_final = Trait_JointPRS_tune
+       } else {
+         Trait_JointPRS_final = Trait_JointPRS_meta
+       }
+       ```
+     - Binary traits:
+       ```
+       JointPRS_meta_val_AUC = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_auc_",pop,".txt"))
+       JointPRS_tune_val_AUC = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_tune/",trait,"_JointPRS_linear_val_",s,"_EUR_EAS_AFR_auc_",pop,".txt"))
+       JointPRS_meta_val_pvalue = fread(paste0("/gpfs/gibbs/pi/zhao/lx94/JointPRS/revision/result/summary_result/Final_weight/same_cohort/JointPRS_meta/",trait,"_JointPRS_meta_val_",s,"_EUR_EAS_AFR_pvalue_",pop,".txt"))
+
+       if (JointPRS_meta_val_AUC > 0.501 && (JointPRS_tune_val_AUC - JointPRS_meta_val_AUC > 0) && JointPRS_meta_val_pvalue < 0.05){
+         Trait_JointPRS_final = Trait_JointPRS_tune
+       } else {
+         Trait_JointPRS_final = Trait_JointPRS_meta
+       }
+       ```
 
 **Note: We recommend standardize the polygenic scores (i.e., converting the scores to zero mean and unit variance) in both tuning and testing datasets before linear combination.**
 
