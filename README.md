@@ -61,11 +61,11 @@ rs9442372	  G	  A	  0.00690567	  2.66e-05
 ```
 
 Here
-- `SNP`: the rs ID.
--  `A1`: the effect allele.
--  `A2`: the alternative allele.
--  `BETA`: the effect of the A1 allele, which is only used to determine the direction of an association.
--  `P`: the p-value of the effect, which is used to calculate the standardized effect size.
+- `SNP`: SNP rsID.
+-  `A1`: Effect allele.
+-  `A2`: Alternative allele.
+-  `BETA`: Effect size of the A1 allele, which is only used to determine the direction of an association.
+-  `P`: P-value of the effect, which is used to calculate the standardized effect size.
 
 In addition, you need to obtain the sample size for the summary statistics, and take the median value if the sample size is different across SNPs.
 
