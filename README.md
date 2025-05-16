@@ -11,7 +11,7 @@ Based on whether tuning data is available, JointPRS has two implementations:
   Computes both the “meta” and “tune” versions, and then uses a data-adaptive approach to pick the optimal JointPRS.
 
 <p align="center">
-  <img src="[https://github.com/user-attachments/files/20256268/Figure1.pdf](https://github.com/user-attachments/files/20256569/Figure1.pdf)" alt="JointPRS Workflow"/>
+  <img src="https://github.com/user-attachments/files/20256569/Figure1.pdf" alt="JointPRS Workflow"/>
 </p>
 
 ## Comprehensive JointPRS Pipelines
