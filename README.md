@@ -64,7 +64,7 @@ Here
 - `SNP`: SNP rsID.
 -  `A1`: Effect allele.
 -  `A2`: Alternative allele.
--  `BETA`: Effect size of the A1 allele, which is only used to determine the direction of an association.
+-  `BETA`: Effect size of allele A1, which is only used to determine the direction of an association.
 -  `P`: P-value of the effect, which is used to calculate the standardized effect size.
 
 In addition, you need to obtain the sample size for the summary statistics, and take the median value if the sample size is different across SNPs.
