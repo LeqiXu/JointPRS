@@ -93,13 +93,13 @@ sample_size1= ; sample_size2= ; sample_size3= ; sample_size4=
 - `${reference_path}`: full path to the reference directory; `${type}`: **1KG** or **UKBB** if you construct two subfolders as recommended.
 - `${bim_path}`: full path to the bim file for the target dataset; `${bim_prefix}`: prefix of the bim file for the target dataset.
 - `${outcome_path}`: full path to the outcome directory.
-- `${param_phi}`: the global shrinkage prior that will be discussed later based on different versions of JointPRS.
+- `${param_phi}`: the global shrinkage prior; In practice, we typically use the automatic estimate or tune it from the set {1e-6, 1e-4, 1e-2, 1e0, auto}. The choice of value will be discussed later in the context of different versions of JointPRS.
 - `${chr}`: the chromosome we want to consider (1-22) and we recommend estimate 22 chromosomes in parallel.
 
 - `${pop1},${pop2},${pop3},${pop4}`: population name from set **{EUR,EAS,AFR,SAS,AMR}**.
 - `${r1},${r2},${r3},${r4}`: upper bound for the correlation pairs, `${r1} * ${r2}` represents the upper bound for the correlation between `${pop1}` and `${pop2}`. And we recommand the following setting:
-  * `r1=1,r2=1,r3=1,r4=1`: if `${param_phi}` does **not** come from set **{1e-06}**. This setting represents the positive correlation assumption.
-  * `r1=0,r2=0,r3=0,r4=0`: if `${param_phi}` comes from set **{1e-06}**. This setting represents no correlation assumption and is equivalent to [the PRS-CSx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx).
+  * `r1=1, r2=1, r3=1, r4=1`: This setting assumes positive correlations across populations. This is the default choice and is recommended for most values of `phi`.
+  * `r1=0, r2=0, r3=0, r4=0`: This setting assumes no correlation across populations. This setting is equivalent to the [PRS-CSx model](https://github.com/getian107/PRScsx/blob/master/README.md#prs-csx) and is preferred when the trait architecture is highly sparse (e.g., **phi = 1e-6**).
 - `${sst1},${sst2},${sst3},${sst4}`: full path and full name of the summary statistics for the corresponding poopulation.
 - `${sample_size1},${sample_size2},${sample_size3},${sample_size4}`: sample size for the corresponding summary statistics, and take the median value if the sample size is different across SNPs.
 
