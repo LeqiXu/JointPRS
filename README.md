@@ -2,7 +2,7 @@
 # JointPRS
 JointPRS is a multi-population PRS model that only requires GWAS summary statistics and LD reference panels from multiple populations. When individual-level tuning data is available, it adopts a data-adaptive approach combining meta-analysis and tuning strategies. This framework is described in detail in:
 
-- **Xu, L., Zhou, G., Jiang, W., Zhang, H., Dong, Y., Guan, L., & Zhao, H. (2025). JointPRS: A data-adaptive framework for multi-population genetic risk prediction incorporating genetic correlation. Nature Communications, 16(1), 3841.**
+- **Xu, L., Zhou, G., Jiang, W., Zhang, H., Dong, Y., Guan, L., & Zhao, H. (2025). JointPRS: a data-adaptive framework for multi-population genetic risk prediction incorporating genetic correlation. Nature Communications, 16, 3841. https://doi.org/10.1038/s41467-025-59143-0**
 
 Based on whether tuning data is available, JointPRS has two implementations:
 - **JointPRS-auto** (no tuning data):  
@@ -316,5 +316,5 @@ For **full JointPRS implementation**, please follow the steps in [Comprehensive 
 Part of the code is adapted from [PRS-CSx](https://github.com/getian107/PRScsx/tree/master). We thank Dr. Tian Ge for sharing his code and LD reference panels.
 
 ## Support
-Please direct any problems or questions to Leqi Xu (leqi.xu@yale.edu).
+Please direct any problems or questions to Leqi Xu (leqixu@ust.hk).
 
